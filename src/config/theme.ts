@@ -6,6 +6,7 @@ const defaultTheme = {
         contrastText: 'rgba(0, 0, 0, 0.87)',
         hover: 'rgba(76, 175, 80, 0.04)',
         focus: 'rgb(76, 175, 80, 0.12)',
+        active: 'rgb(76, 175, 80, 0.2)',
     },
     secondary: {
         main: 'rgb(255, 152, 0)',
@@ -14,6 +15,7 @@ const defaultTheme = {
         contrastText: 'rgba(0, 0, 0, 0.87)',
         hover: 'rgba(255, 152, 0, 0.04)',
         focus: 'rgb(255, 152, 0, 0.12)',
+        active: 'rgb(255, 152, 0, 0.2)',
     },
     error: {
         light: 'rgb(229, 115, 115)',
@@ -22,6 +24,7 @@ const defaultTheme = {
         contrastText: 'rgb(255, 255, 255)',
         hover: 'rgba(244, 67, 54, 0.04)',
         focus: 'rgb(244, 67, 54, 0.12)',
+        active: 'rgb(244, 67, 54, 0.2)',
     },
     warning: {
         light: 'rgb(255, 184, 77)',
@@ -30,6 +33,7 @@ const defaultTheme = {
         contrastText: 'rgba(0, 0, 0, 0.87)',
         hover: 'rgba(255, 152, 0, 0.04)',
         focus: 'rgb(255, 152, 0, 0.12)',
+        active: 'rgb(255, 152, 0, 0.2)',
     },
     info: {
         light: 'rgb(100, 180, 246)',
@@ -38,6 +42,7 @@ const defaultTheme = {
         contrastText: 'rgb(255, 255, 255)',
         hover: 'rgba(33, 150, 243, 0.04)',
         focus: 'rgb(33, 150, 243, 0.12)',
+        active: 'rgb(33, 150, 243, 0.2)',
     },
     grey: {
         '50': '#fafafa',

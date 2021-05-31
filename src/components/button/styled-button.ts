@@ -1,12 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ComponentSize } from '../../config/sizes';
 import { ButtonColor, ButtonVarient } from './button';
-
-// innerType: type,
-// size,
-// disabled,
-// iconOnly: children == null
-
 interface StyledButtonProps {
     buttonColor: ButtonColor;
     varient: ButtonVarient;
@@ -14,8 +8,6 @@ interface StyledButtonProps {
     disabled: boolean;
     iconOnly: boolean;
 }
-
-// ToDo see if a function named getButtonBackground can be created by taking varient variable as input.
 
 const StyledButton = styled.button<StyledButtonProps>`
     text-decoration: none;
@@ -29,6 +21,13 @@ const StyledButton = styled.button<StyledButtonProps>`
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: white;
+    letter-spacing: 0.05rem;
+    &:hover {
+        background-color: ${(pr) => pr.theme[pr.buttonColor].hover};
+    }
+    &:active {
+        background-color: ${(pr) => pr.theme[pr.buttonColor].active};
+    }
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
         box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
         border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -54,11 +53,14 @@ const StyledButton = styled.button<StyledButtonProps>`
                             0px 3px 14px 2px rgb(0 0 0 / 12%);
                     }
                 `;
-
+            // <span class="MuiTouchRipple-ripple MuiTouchRipple-rippleVisible" style="width: 120.748px; height: 120.748px; top: -50.3738px; left: -34.3738px;"><span class="MuiTouchRipple-child"></span></span>
             case 'outlined':
                 return css`
                     color: ${pr.theme[pr.buttonColor].main};
-                    border: 1px solid ${pr.theme[pr.buttonColor].main};
+                    border: 1px solid ${pr.theme[pr.buttonColor].light};
+                    &:hover {
+                        border: 1px solid ${pr.theme[pr.buttonColor].main};
+                    }
                 `;
 
             case 'text':
@@ -79,7 +81,6 @@ const StyledButton = styled.button<StyledButtonProps>`
     text-align: center;
     cursor: pointer;
     font-weight: 500;
-    text-transform: uppercase;
 `;
 
 export default StyledButton;
