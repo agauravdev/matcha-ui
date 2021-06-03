@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {
     ForwardRefRenderFunction,
     MouseEventHandler,
@@ -6,15 +5,14 @@ import React, {
     ReactNode,
 } from 'react';
 import { ComponentSize } from '../../config/sizes';
-import StyledButton from './styled-button';
-
-export type ButtonColor = 'primary' | 'secondary' | 'danger';
+import { MainColors } from '../../config/theme';
+import StyledButton from './button.styled';
 
 export type ButtonVarient = 'contained' | 'text' | 'outlined';
 
 interface BaseButtonProps {
     varient?: ButtonVarient;
-    color?: ButtonColor;
+    color?: MainColors;
     leftIcon?: ElementType;
     rightIcon?: ElementType;
     size?: ComponentSize;

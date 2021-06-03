@@ -68,6 +68,43 @@ const defaultTheme = {
     disabled: 'rgba(0, 0, 0, 0.26)',
     disabledBackground: 'rgba(0, 0, 0, 0.12)',
     divider: 'rgba(0, 0, 0, 0.12)',
+    breakpoints: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+    },
 };
+
+export type MainColors = 'primary' | 'secondary' | 'error' | 'warning' | 'info';
+
+export type ColorVarients = {
+    main?: string;
+    light?: string;
+    dark?: string;
+    contrastText?: string;
+    hover?: string;
+    focus?: string;
+    active?: string;
+};
+
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
+export type BreakpointValues = {
+    [key in Breakpoint]?: number;
+};
+
+export type Theme = {
+    text?: {
+        primary?: string;
+        secondary?: string;
+        disabled?: string;
+    };
+    disabled?: string;
+    disabledBackground?: string;
+    divider?: string;
+    breakpoints?: BreakpointValues;
+} & { [key in MainColors]?: ColorVarients };
 
 export default defaultTheme;

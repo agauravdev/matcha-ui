@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 import { ComponentSize } from '../../config/sizes';
-import { ButtonColor, ButtonVarient } from './button';
+import { MainColors } from '../../config/theme';
+import { ButtonVarient } from './button';
+
 interface StyledButtonProps {
-    buttonColor: ButtonColor;
+    buttonColor: MainColors;
     varient: ButtonVarient;
     size: ComponentSize;
     disabled: boolean;
