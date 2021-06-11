@@ -16,8 +16,14 @@
         "scope": "javascript, typescript, javascriptreact, typescriptreact",
         "prefix": "rfrc",
         "body": [
+            "import { ForwardRefRenderFunction } from 'react';",
+            "",
+            "",
+            "${3:PropsType} = {",
+            "$0",
+            "}",
             "const ${1:Name}: ForwardRefRenderFunction<${2:RefType}, ${3:PropsType}> = (props, ref) => {",
-            "return <${4:StyledComponent}> $0 </${4:StyledComponent}>",
+            "return <${4:StyledComponent} />",
             "}",
             "export default React.forwardRef<${2:RefType}, ${3:PropsType}>(${1:Name});"
         ]
