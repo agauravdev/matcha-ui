@@ -32,8 +32,9 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
     justify-content: center;
     align-items: center;
     background-color: blue;
-    border-radius: 50%;
+    border-radius: ${(pr) => (pr.isDot ? '0.3rem' : '0.6rem')};
     font-size: 0.6rem;
+    padding: 0 0.3rem;
 `;
 
 const StyledBadgeWrapper = styled.span<StyledBadgeWrapperProps>`

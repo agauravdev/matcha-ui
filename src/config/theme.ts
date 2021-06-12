@@ -209,16 +209,6 @@ export type BreakpointValues = {
     [key in Breakpoint]?: number;
 };
 
-export type Theme = {
-    text?: {
-        primary?: string;
-        secondary?: string;
-        disabled?: string;
-    };
-    disabled?: string;
-    disabledBackground?: string;
-    divider?: string;
-    breakpoints?: BreakpointValues;
-} & { [key in MainColors]?: ColorVarients };
+export type Theme = typeof defaultTheme;
 
 export default defaultTheme;
