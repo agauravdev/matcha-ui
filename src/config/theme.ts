@@ -183,6 +183,24 @@ export type ColorVarients = {
     hover?: string;
     focus?: string;
     active?: string;
+    lighter10?: string;
+    darker10?: string;
+    lighter20?: string;
+    darker20?: string;
+    lighter30?: string;
+    darker30?: string;
+    lighter40?: string;
+    darker40?: string;
+    lighter50?: string;
+    darker50?: string;
+    lighter60?: string;
+    darker60?: string;
+    lighter70?: string;
+    darker70?: string;
+    lighter80?: string;
+    darker80?: string;
+    lighter90?: string;
+    darker90?: string;
 };
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
