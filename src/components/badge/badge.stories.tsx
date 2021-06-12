@@ -15,8 +15,8 @@ export default {
         },
         position: {
             options: ['top', 'bottom'],
-            control: {type: 'radio'},
-        }
+            control: { type: 'radio' },
+        },
         // varient: {
         //     options: ['default', 'filled', 'outlined'],
         //     control: { type: 'radio' },
@@ -40,7 +40,7 @@ export const IconBadge = IconTemplate.bind({});
 IconBadge.args = {
     color: 'primary',
     content: 1,
-    position: 'top'
+    position: 'top',
 };
 
 const AvatarTemplate: Story<BadgeProps> = (args) => (
@@ -53,5 +53,5 @@ export const AvatarBadge = AvatarTemplate.bind({});
 AvatarBadge.args = {
     color: 'primary',
     content: 1,
-    position: 'top'
+    position: 'top',
 };

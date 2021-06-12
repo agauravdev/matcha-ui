@@ -14,19 +14,13 @@ const Badge: ForwardRefRenderFunction<HTMLSpanElement, BadgeProps> = (
     props,
     ref
 ) => {
-    const {
-        content,
-        color = 'primary',
-        position = 'top',
-        children,
-    } = props;
+    const { content, color = 'primary', position = 'top', children } = props;
     return (
-        <StyledBadgeWrapper
-            ref={ref}
-            color={color}
-        >
+        <StyledBadgeWrapper ref={ref} color={color}>
             {children}
-            <StyledBadge isDot={content == null} position={position}>{content}</StyledBadge>
+            <StyledBadge isDot={content == null} position={position}>
+                {content}
+            </StyledBadge>
         </StyledBadgeWrapper>
     );
 };
