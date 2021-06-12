@@ -69,6 +69,9 @@ const StyledButton = styled.button<StyledButtonProps>`
                 return css`
                     color: ${pr.theme[pr.buttonColor].main};
                     border: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 `;
             default:
                 break;
