@@ -1,4 +1,6 @@
 import { Story, Meta } from '@storybook/react';
+import { MdShoppingCart } from 'react-icons/md';
+import { Icon } from '../icon';
 
 import Button, { ButtonProps } from './button';
 
@@ -24,6 +26,17 @@ Default.args = {
     color: 'primary',
     varient: 'contained',
     children: 'Default',
+    loading: false,
+    loadingText: 'Loading',
+};
+
+export const IconButton = Template.bind({});
+IconButton.args = {
+    color: 'primary',
+    varient: 'contained',
+    leftIcon: <MdShoppingCart />,
+    rightIcon: <MdShoppingCart />,
+    children: 'button text',
     loading: false,
     loadingText: 'Loading',
 };

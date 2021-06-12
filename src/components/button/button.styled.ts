@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { ComponentSize } from '../../config/sizes';
 import { MainColors } from '../../config/theme';
+import { Icon } from '../icon';
 import { ButtonVarient } from './button';
 
 interface StyledButtonProps {
@@ -55,7 +56,6 @@ const StyledButton = styled.button<StyledButtonProps>`
                             0px 3px 14px 2px rgb(0 0 0 / 12%);
                     }
                 `;
-            // <span class="MuiTouchRipple-ripple MuiTouchRipple-rippleVisible" style="width: 120.748px; height: 120.748px; top: -50.3738px; left: -34.3738px;"><span class="MuiTouchRipple-child"></span></span>
             case 'outlined':
                 return css`
                     color: ${pr.theme[pr.buttonColor].main};
@@ -77,6 +77,15 @@ const StyledButton = styled.button<StyledButtonProps>`
                 break;
         }
     }}
+    & ${Icon} {
+        font-size: 1rem;
+    }
+    & ${Icon}:first-of-type {
+        padding-right: 0.5rem;
+    }
+    & ${Icon}:last-of-type {
+        padding-left: 0.5rem;
+    }
     ${(pr) =>
         pr.disabled &&
         css`

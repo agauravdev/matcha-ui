@@ -43,7 +43,6 @@ const StyledBadgeWrapper = styled.span<StyledBadgeWrapperProps>`
     vertical-align: middle;
     & ${Icon} {
         font-size: 2rem;
-        line-height: 75%;
     }
     & ${StyledBadge} {
         background-color: ${(pr) => pr.theme[pr.color].main};

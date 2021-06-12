@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import { ComponentSize } from '../../config/sizes';
 import { MainColors } from '../../config/theme';
+import { Icon, IconProps } from '../icon';
 import StyledButton from './button.styled';
 
 export type ButtonVarient = 'contained' | 'text' | 'outlined';
@@ -13,10 +14,11 @@ export type ButtonVarient = 'contained' | 'text' | 'outlined';
 interface BaseButtonProps {
     varient?: ButtonVarient;
     color?: MainColors;
-    leftIcon?: ElementType;
-    rightIcon?: ElementType;
+    leftIcon?: ReactNode;
+    rightIcon?: ReactNode;
+    leftIconProps?: IconProps;
+    rightIconProps?: IconProps;
     size?: ComponentSize;
-    className?: string;
     children?: ReactNode;
     disabled?: boolean;
     loading?: boolean;
@@ -48,8 +50,9 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
         varient = 'contained',
         leftIcon,
         rightIcon,
+        leftIconProps,
+        rightIconProps,
         size = 'md',
-        className,
         children,
         disabled = false,
         loading = false,
@@ -77,20 +80,15 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
         </>
     ) : (
         <>
-            {/* todo add styled icons here */}
+            {leftIcon && <Icon {...leftIconProps}>{leftIcon}</Icon>}
             {children}
+            {rightIcon && <Icon {...rightIconProps}>{rightIcon}</Icon>}
         </>
     );
 
     if (as && !disabled) {
         return (
-            <StyledButton
-                as={as}
-                to={to}
-                ref={ref}
-                className={className}
-                {...styles}
-            >
+            <StyledButton as={as} to={to} ref={ref} {...styles}>
                 {buttonBody}
             </StyledButton>
         );
@@ -102,7 +100,6 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
                 as="a"
                 href={href}
                 ref={ref as React.MutableRefObject<HTMLAnchorElement>}
-                className={className}
                 {...styles}
             >
                 {buttonBody}
@@ -116,7 +113,6 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
             type="button"
             onClick={onClick}
             ref={ref as React.MutableRefObject<HTMLButtonElement>}
-            className={className}
             {...styles}
         >
             {buttonBody}
