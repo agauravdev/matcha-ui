@@ -3,6 +3,7 @@ import React, {
     MouseEventHandler,
     ElementType,
     ReactNode,
+    MutableRefObject,
 } from 'react';
 import { ComponentSize } from '../../config/sizes';
 import { MainColors } from '../../config/theme';
@@ -99,7 +100,7 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
             <StyledButton
                 as="a"
                 href={href}
-                ref={ref as React.MutableRefObject<HTMLAnchorElement>}
+                ref={ref as MutableRefObject<HTMLAnchorElement>}
                 {...styles}
             >
                 {buttonBody}
@@ -112,7 +113,7 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
             as="button"
             type="button"
             onClick={onClick}
-            ref={ref as React.MutableRefObject<HTMLButtonElement>}
+            ref={ref as MutableRefObject<HTMLButtonElement>}
             {...styles}
         >
             {buttonBody}

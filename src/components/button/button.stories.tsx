@@ -1,6 +1,5 @@
 import { Story, Meta } from '@storybook/react';
 import { MdShoppingCart } from 'react-icons/md';
-import { Icon } from '../icon';
 
 import Button, { ButtonProps } from './button';
 
