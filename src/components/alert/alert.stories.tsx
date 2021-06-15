@@ -9,14 +9,10 @@ export default {
             options: ['primary', 'secondary', 'error', 'warning', 'info'],
             control: { type: 'radio' },
         },
-        varient: {
+        variant: {
             options: ['default', 'filled', 'outlined'],
             control: { type: 'radio' },
         },
-        // varient: {
-        //     options: ['contained', 'text', 'outlined'],
-        //     control: { type: 'radio' },
-        // },
     },
 } as Meta;
 
@@ -29,5 +25,5 @@ const Template: Story<AlertProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     color: 'primary',
-    varient: 'default',
+    variant: 'default',
 };

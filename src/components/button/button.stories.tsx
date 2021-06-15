@@ -23,7 +23,7 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     color: 'primary',
-    varient: 'contained',
+    variant: 'contained',
     children: 'Default',
     loading: false,
     loadingText: 'Loading',
@@ -32,7 +32,7 @@ Default.args = {
 export const IconButton = Template.bind({});
 IconButton.args = {
     color: 'primary',
-    varient: 'contained',
+    variant: 'contained',
     leftIcon: <MdShoppingCart />,
     rightIcon: <MdShoppingCart />,
     children: 'button text',

@@ -4,7 +4,7 @@ import { Icon } from '../icon';
 
 export type StyledAlertProps = {
     color: MainColors;
-    varient: 'default' | 'filled' | 'outlined';
+    variant: 'default' | 'filled' | 'outlined';
 };
 
 const StyledAlert = styled.div<StyledAlertProps>`
@@ -12,7 +12,7 @@ const StyledAlert = styled.div<StyledAlertProps>`
     border: none;
     color: ${(pr) => pr.theme[pr.color].darker60};
     ${(pr) => {
-        switch (pr.varient) {
+        switch (pr.variant) {
             case 'filled':
                 return css`
                     background-color: ${pr.theme[pr.color].main};

@@ -10,10 +10,10 @@ import { MainColors } from '../../config/theme';
 import { Icon, IconProps } from '../icon';
 import StyledButton from './button.styled';
 
-export type ButtonVarient = 'contained' | 'text' | 'outlined';
+export type ButtonVariant = 'contained' | 'text' | 'outlined';
 
 interface BaseButtonProps {
-    varient?: ButtonVarient;
+    variant?: ButtonVariant;
     color?: MainColors;
     leftIcon?: ReactNode;
     rightIcon?: ReactNode;
@@ -48,7 +48,7 @@ export type ButtonProps = HTMLButtonProps &
 const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
     const {
         color = 'primary',
-        varient = 'contained',
+        variant = 'contained',
         leftIcon,
         rightIcon,
         leftIconProps,
@@ -68,7 +68,7 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
         buttonColor: color,
         size,
         disabled: disabled || loading,
-        varient,
+        variant,
         iconOnly: children == null,
     };
 

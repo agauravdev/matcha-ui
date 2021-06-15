@@ -7,7 +7,7 @@ import StyledAlert, { StyledAlertText } from './alert.styled';
 export type AlertProps = {
     color: MainColors;
     icon?: ReactNode;
-    varient?: 'default' | 'filled' | 'outlined';
+    variant?: 'default' | 'filled' | 'outlined';
     action?: ReactNode;
     children: ReactNode;
 };
@@ -19,13 +19,13 @@ const Alert: ForwardRefRenderFunction<HTMLDivElement, AlertProps> = (
     const {
         color = 'primary',
         icon,
-        varient = 'default',
+        variant = 'default',
         // action,
         children,
     } = props;
 
     return (
-        <StyledAlert varient={varient} color={color} ref={ref}>
+        <StyledAlert variant={variant} color={color} ref={ref}>
             {icon && <Icon>{icon}</Icon>}
             <StyledAlertText>{children}</StyledAlertText>
         </StyledAlert>
