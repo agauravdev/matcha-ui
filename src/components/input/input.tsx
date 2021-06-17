@@ -1,7 +1,11 @@
-import React, { ForwardRefRenderFunction } from 'react';
+import React, { ForwardRefRenderFunction, ReactNode } from 'react';
 import { ChangeEvent } from 'react';
 import { MainColors } from '../../config/theme';
-import StyledInput from './input.styled';
+import {
+    StyledAdornment,
+    StyledInput,
+    StyledInputWrapper,
+} from './input.styled';
 
 export type InputProps = {
     hoverColor?: string;
@@ -10,15 +14,47 @@ export type InputProps = {
     placeholder?: string;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     value?: string;
-    // ToDo: add these. Will need to make the parent component as a div.
-    // startAdornment?: ReactNode | 'string';
-    // endAdornment?: ReactNode | 'string';
+    startAdornment?: ReactNode | 'string';
+    endAdornment?: ReactNode | 'string';
 };
 
 const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     props,
     ref
 ) => {
-    return <StyledInput {...props} />;
+    const {
+        hoverColor,
+        focusColor,
+        error,
+        placeholder,
+        onChange,
+        value,
+        startAdornment,
+        endAdornment,
+    } = props;
+
+    const wrapperStyles = {
+        hoverColor,
+        focusColor,
+        error,
+        startAdornment: !!startAdornment,
+        endAdornment: !!endAdornment,
+    };
+
+    const inputProps = {
+        placeholder,
+        onChange,
+        value,
+    };
+
+    return (
+        <StyledInputWrapper {...wrapperStyles}>
+            {startAdornment && (
+                <StyledAdornment>{startAdornment}</StyledAdornment>
+            )}
+            <StyledInput {...inputProps} ref={ref} />
+            {endAdornment && <StyledAdornment>{endAdornment}</StyledAdornment>}
+        </StyledInputWrapper>
+    );
 };
 export default React.forwardRef<HTMLInputElement, InputProps>(Input);

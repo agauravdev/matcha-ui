@@ -1,32 +1,50 @@
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
 import { MainColors } from '../../config/theme';
+import { Icon } from '../icon';
 
 export type StyledInputProps = {
-    hoverColor?: string;
-    focusColor?: MainColors;
-    error?: boolean;
     placeholder?: string;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     value?: string;
 };
 
-const StyledInput = styled.input.attrs(({ placeholder, value, onChange }) => ({
-    placeholder,
-    value,
-    onChange,
-}))<StyledInputProps>`
+export type StyledInputWrapperProps = {
+    hoverColor?: string;
+    focusColor?: MainColors;
+    error?: boolean;
+    endAdornment?: boolean;
+    startAdornment?: boolean;
+};
+
+export const StyledAdornment = styled.span`
+    color: rgba(0, 0, 0, 0.6);
+    font-size: inherit;
+`;
+
+export const StyledInputWrapper = styled.div.attrs({
+    tabIndex: 0,
+})<StyledInputWrapperProps>`
+    display: inline-flex;
+    align-items: center;
+    padding-left: ${(pr) => pr.startAdornment && `0.8rem`};
+    padding-right: ${(pr) => pr.endAdornment && `0.8rem`};
     border: 1px solid
         ${(pr) => (pr.error ? pr.theme.error.main : pr.theme.grey['300'])};
-    padding: 0.75rem;
     border-radius: 0.25rem;
-    height: 1rem;
 
-    &:hover {
-        border-color: ${(pr) => pr.hoverColor || pr.theme.grey['500']};
+    & ${Icon} {
+        padding-top: 0.2rem;
     }
 
-    &:focus-visible {
+    &:hover {
+        border-color: ${(pr) =>
+            pr.error
+                ? pr.theme.error.main
+                : pr.hoverColor || pr.theme.grey['500']};
+    }
+
+    &:focus-within {
         outline: none;
         border-color: ${(pr) =>
             pr.error
@@ -35,6 +53,23 @@ const StyledInput = styled.input.attrs(({ placeholder, value, onChange }) => ({
         border-width: 2px;
         margin: -1px;
     }
+    font-weight: 400;
+    font-size: 0.8rem;
 `;
 
-export default StyledInput;
+export const StyledInput = styled.input.attrs(
+    ({ placeholder, value, onChange }) => ({
+        placeholder,
+        value,
+        onChange,
+    })
+)<StyledInputProps>`
+    border: none;
+    border-radius: inherit;
+    padding: 0.75rem;
+    &:focus-visible {
+        outline: transparent;
+        border: none;
+    }
+    font: inherit;
+`;

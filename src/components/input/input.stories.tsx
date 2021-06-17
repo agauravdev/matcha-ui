@@ -1,6 +1,8 @@
 import { Story, Meta } from '@storybook/react';
 
 import Input, { InputProps } from './input';
+import { MdLock } from 'react-icons/all';
+import { Icon } from '../icon';
 
 export default {
     title: 'Example/Input',
@@ -20,4 +22,10 @@ Default.args = {
     placeholder: 'name',
     focusColor: 'primary',
     error: false,
+    startAdornment: (
+        <Icon>
+            <MdLock />
+        </Icon>
+    ),
+    endAdornment: '',
 };

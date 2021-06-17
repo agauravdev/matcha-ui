@@ -11,7 +11,7 @@ export default {
             options: ['primary', 'secondary', 'error', 'warning', 'info'],
             control: { type: 'radio' },
         },
-        varient: {
+        variant: {
             options: ['contained', 'text', 'outlined'],
             control: { type: 'radio' },
         },
@@ -34,8 +34,6 @@ IconButton.args = {
     color: 'primary',
     variant: 'contained',
     leftIcon: <MdShoppingCart />,
-    rightIcon: <MdShoppingCart />,
-    children: 'button text',
     loading: false,
     loadingText: 'Loading',
 };
