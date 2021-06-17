@@ -28,4 +28,5 @@ Default.args = {
         </Icon>
     ),
     endAdornment: '',
+    helperText: '',
 };

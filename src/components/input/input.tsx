@@ -1,9 +1,14 @@
-import React, { ForwardRefRenderFunction, ReactNode } from 'react';
+import React, {
+    CSSProperties,
+    ForwardRefRenderFunction,
+    ReactNode,
+} from 'react';
 import { ChangeEvent } from 'react';
 import { MainColors } from '../../config/theme';
 import {
     StyledAdornment,
     StyledInput,
+    StyledHelperText,
     StyledInputWrapper,
 } from './input.styled';
 
@@ -11,6 +16,7 @@ export type InputProps = {
     hoverColor?: string;
     focusColor?: MainColors;
     error?: boolean;
+    helperText?: string;
     placeholder?: string;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     value?: string;
@@ -31,6 +37,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         value,
         startAdornment,
         endAdornment,
+        helperText,
     } = props;
 
     const wrapperStyles = {
@@ -47,14 +54,26 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         value,
     };
 
+    const baseDivStyle: CSSProperties = {
+        display: 'inline-flex',
+        flexDirection: 'column',
+        verticalAlign: 'top',
+        margin: '0.5rem',
+    };
+
     return (
-        <StyledInputWrapper {...wrapperStyles}>
-            {startAdornment && (
-                <StyledAdornment>{startAdornment}</StyledAdornment>
-            )}
-            <StyledInput {...inputProps} ref={ref} />
-            {endAdornment && <StyledAdornment>{endAdornment}</StyledAdornment>}
-        </StyledInputWrapper>
+        <div style={baseDivStyle}>
+            <StyledInputWrapper {...wrapperStyles}>
+                {startAdornment && (
+                    <StyledAdornment>{startAdornment}</StyledAdornment>
+                )}
+                <StyledInput {...inputProps} ref={ref} />
+                {endAdornment && (
+                    <StyledAdornment>{endAdornment}</StyledAdornment>
+                )}
+            </StyledInputWrapper>
+            <StyledHelperText error={error}>{helperText}</StyledHelperText>
+        </div>
     );
 };
 export default React.forwardRef<HTMLInputElement, InputProps>(Input);

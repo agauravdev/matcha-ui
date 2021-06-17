@@ -36,7 +36,6 @@ const StyledAlert = styled.div<StyledAlertProps>`
         margin-right: 0.75rem;
         display: flex;
     }
-    // background-color:  pr.theme[pr.color].light};
     height: 3rem;
     display: flex;
     padding: 0.3rem 1rem;
@@ -48,7 +47,7 @@ const StyledAlert = styled.div<StyledAlertProps>`
 `;
 
 export const StyledAlertText = styled.div`
-    padding-bottom: 0.15rem;
+    padding-bottom: 0.05rem;
 `;
 
 export default StyledAlert;

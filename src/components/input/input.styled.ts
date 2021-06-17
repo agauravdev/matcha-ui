@@ -73,3 +73,15 @@ export const StyledInput = styled.input.attrs(
     }
     font: inherit;
 `;
+
+export const StyledHelperText = styled.p<{ error?: boolean }>`
+    font-size: 0.75rem;
+    line-height: 1.66;
+    letter-spacing: 0.033rem;
+    text-align: left;
+    margin-top: 0.2rem;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+    color: ${(pr) =>
+        pr.error ? pr.theme.error.main : pr.theme.text.secondary};
+`;
