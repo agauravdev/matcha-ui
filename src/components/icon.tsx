@@ -4,7 +4,7 @@ import { MainColors } from '../config/theme';
 export type IconProps = {
     customColor?: string;
     color?: MainColors;
-    colorVarient?: string;
+    colorVariant?: string;
     size?: number;
 };
 
@@ -16,7 +16,10 @@ export const Icon = styled.span<IconProps>`
         if (pr.customColor) return pr.customColor;
         else
             return pr.color
-                ? pr.theme[pr.color][pr.colorVarient || 'main']
+                ? pr.theme[pr.color][pr.colorVariant || 'main']
                 : 'currentColor';
     }};
+    & svg {
+        color: currentColor;
+    }
 `;

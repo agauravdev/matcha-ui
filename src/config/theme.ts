@@ -175,7 +175,7 @@ const defaultTheme = {
 
 export type MainColors = 'primary' | 'secondary' | 'error' | 'warning' | 'info';
 
-export type ColorVarients = {
+export type ColorVariants = {
     main?: string;
     light?: string;
     dark?: string;
