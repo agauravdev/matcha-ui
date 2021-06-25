@@ -9,22 +9,25 @@ export type AvatarProps =
           type: 'image';
           src: string;
           alt: string;
-          size: ComponentSize;
+          size?: ComponentSize;
       }
     | {
           type: 'text';
           text: string;
-          size: ComponentSize;
+          size?: ComponentSize;
           bgColor: MainColors;
       };
 
-const Avatar: ForwardRefRenderFunction<unknown, AvatarProps> = (props, ref) => {
+const Avatar: ForwardRefRenderFunction<
+    HTMLImageElement | HTMLDivElement,
+    AvatarProps
+> = (props, ref) => {
     if (props.type === 'image')
         return (
             <StyledAvatarImage
                 src={props.src}
                 alt={props.alt}
-                size={props.size}
+                size={props.size || 'sm'}
                 ref={ref as MutableRefObject<HTMLImageElement>}
             />
         );
@@ -39,4 +42,6 @@ const Avatar: ForwardRefRenderFunction<unknown, AvatarProps> = (props, ref) => {
             </StyledAvatarText>
         );
 };
-export default React.forwardRef<unknown, AvatarProps>(Avatar);
+export default React.forwardRef<HTMLImageElement | HTMLDivElement, AvatarProps>(
+    Avatar
+);

@@ -5,15 +5,22 @@ import StyledList, {
 } from './list.styled';
 import React, { ReactNode } from 'react';
 import { Icon } from '../icon';
+import { Avatar } from '../avatar';
+import { AvatarProps } from '../avatar/avatar';
 
 export type ListItemTextProps = {
     primary: string;
     secondary?: string;
 };
 
-export type ListItemProps = {
-    icon?: ReactNode;
-};
+export type ListItemProps =
+    | {
+          icon: ReactNode;
+      }
+    | {
+          avatarProps: AvatarProps;
+      }
+    | {};
 
 export const ListItemText: React.FC<ListItemTextProps> = ({
     primary,
@@ -27,11 +34,12 @@ export const ListItemText: React.FC<ListItemTextProps> = ({
     );
 };
 
-export const ListItem: React.FC<ListItemProps> = ({ icon, children }) => {
+export const ListItem: React.FC<ListItemProps> = (props) => {
     return (
-        <StyledListItem>
-            <Icon>{icon}</Icon>
-            {children}
+        <StyledListItem borderBelow={'avatarProps' in props}>
+            {'icon' in props && <Icon>{props.icon}</Icon>}
+            {'avatarProps' in props && <Avatar {...props.avatarProps} />}
+            {props.children}
         </StyledListItem>
     );
 };

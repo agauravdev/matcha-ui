@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import { Icon } from '../icon';
+import { StyledAvatarImage } from '../avatar/avatar.styled';
 
 export type StyledListProps = {};
 
-export type StyledListItemProps = {};
+export type StyledListItemProps = {
+    borderBelow: boolean;
+};
 
 export type StyledListItemTextProps = {};
 
@@ -22,6 +25,11 @@ export const StyledListItem = styled.li<StyledListItemProps>`
     box-sizing: border-box;
     text-align: left;
     padding: 0.5rem 1rem;
+    border-bottom: ${(pr) => pr.borderBelow && '1px solid ' + pr.theme.divider};
+
+    & ${StyledAvatarImage} {
+        margin-right: 1rem;
+    }
 
     & ${Icon} {
         min-width: 2.5rem;

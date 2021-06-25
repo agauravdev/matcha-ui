@@ -18,7 +18,7 @@ export default {
     },
 } as Meta;
 
-const Template: Story = (args) => (
+const IconTemplate: Story = (args) => (
     <List>
         <ListItem icon={args.icon}>
             <ListItemText primary={args.primary} secondary={args.secondary} />
@@ -35,9 +35,65 @@ const Template: Story = (args) => (
     </List>
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const ListWithIcons = IconTemplate.bind({});
+ListWithIcons.args = {
     primary: 'primary',
     secondary: 'secondary',
     icon: 'None',
+};
+
+const ImageTemplate: Story = (args) => (
+    <List>
+        <ListItem
+            avatarProps={{
+                type: 'image',
+                src: args.image,
+                alt: args.alt,
+                size: 'md',
+            }}
+        >
+            <ListItemText primary={args.primary} secondary={args.secondary} />
+        </ListItem>
+        <ListItem
+            avatarProps={{
+                type: 'image',
+                src: args.image,
+                alt: args.alt,
+                size: 'md',
+            }}
+        >
+            <ListItemText primary={args.primary} secondary={args.secondary} />
+        </ListItem>
+        <ListItem
+            avatarProps={{
+                type: 'image',
+                src: args.image,
+                alt: args.alt,
+                size: 'md',
+            }}
+        >
+            <ListItemText primary={args.primary} secondary={args.secondary} />
+        </ListItem>
+        <ListItem
+            avatarProps={{
+                type: 'image',
+                src: args.image,
+                alt: args.alt,
+                size: 'md',
+            }}
+        >
+            <ListItemText primary={args.primary} secondary={args.secondary} />
+        </ListItem>
+    </List>
+);
+
+export const ListWithImage = ImageTemplate.bind({});
+ListWithImage.args = {
+    primary: 'primary',
+    secondary: 'secondary',
+    image: 'https://sm.ign.com/ign_in/review/m/marvels-sp/marvels-spider-man-miles-morales-review_fkqf.jpg',
+    alt: 'spiderman',
+};
+ListWithImage.argTypes = {
+    icon: { table: { disable: true } },
 };
