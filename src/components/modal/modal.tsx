@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
-import { StyledModal, StyledModalWrapper } from './modal.styled';
+import React, { ReactNode, useEffect } from 'react';
+import {
+    StyledCloseIcon,
+    StyledModal,
+    StyledModalWrapper,
+} from './modal.styled';
+import { MdClose } from 'react-icons/all';
 
 export type ModalProps = {
     open: boolean;
     onClose: () => void;
-    closeIcon?: boolean;
+    closeIcon?: ReactNode | 'none';
     width?: string;
 };
 
 const Modal: React.FC<ModalProps> = (props) => {
-    const { open, onClose, children, width } = props;
+    const { open, onClose, children, width, closeIcon = <MdClose /> } = props;
 
     useEffect(() => {
         if (open) {
@@ -23,6 +28,11 @@ const Modal: React.FC<ModalProps> = (props) => {
     return (
         <StyledModalWrapper onClick={onClose}>
             <StyledModal width={width} onClick={(e) => e.stopPropagation()}>
+                {closeIcon !== 'none' && (
+                    <StyledCloseIcon onClick={onClose}>
+                        {closeIcon}
+                    </StyledCloseIcon>
+                )}
                 {children}
             </StyledModal>
         </StyledModalWrapper>

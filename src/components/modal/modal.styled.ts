@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Icon } from '../icon';
 
 export type StyledModalProps = {
     width?: string;
@@ -31,4 +32,11 @@ export const StyledModal = styled.div<StyledModalProps>`
     border: 1px solid black;
     box-shadow: rgb(0 0 0 / 20%) 0 11px 15px -7px,
         rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px;
+`;
+
+export const StyledCloseIcon = styled(Icon)`
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
 `;
