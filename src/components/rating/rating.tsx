@@ -26,6 +26,7 @@ export type RatingProps = {
     size?: ComponentSize;
     name: string;
     color?: MainColors;
+    clearValue?: () => void;
 };
 
 type RatingItemProps = {
@@ -40,6 +41,7 @@ type RatingItemProps = {
     onChange?: ChangeEventHandler<HTMLInputElement>;
     readOnly: boolean;
     id: string;
+    clearValue?: () => void;
 };
 
 const HiddenInput = styled.input`
@@ -59,6 +61,7 @@ const RatingItem: React.FC<RatingItemProps> = (props) => {
         onChange,
         readOnly,
         id,
+        clearValue,
     } = props;
 
     const [focus, setFocus] = useState(false);
@@ -82,10 +85,11 @@ const RatingItem: React.FC<RatingItemProps> = (props) => {
                 checked={checked}
                 readOnly={readOnly}
                 onChange={onChange}
+                onClick={clearValue}
                 onFocus={(e) => {
                     if (e.target.matches(':focus-visible')) setFocus(true);
                 }}
-                onBlur={(e) => {
+                onBlur={() => {
                     setFocus(false);
                 }}
             />
@@ -113,6 +117,7 @@ const Rating: ForwardRefRenderFunction<HTMLSpanElement, RatingProps> = (
     const [activeValue, setActiveValue] = useState(-1);
     const [defaultName] = useState(`matcha-${Math.round(Math.random() * 1e9)}`);
     const [id] = useState(`matcha-${Math.round(Math.random() * 1e9)}`);
+    const [focus, setFocus] = useState(false);
 
     const readOnly = disabled || readOnlyProp;
     const resetActiveValue = useCallback(() => {
@@ -125,7 +130,7 @@ const Rating: ForwardRefRenderFunction<HTMLSpanElement, RatingProps> = (
             onMouseLeave={resetActiveValue}
             disabled={disabled}
             color={color}
-            focus={value === null}
+            focus={focus}
         >
             {Array.from(new Array(max)).map((_, index) => {
                 return (
@@ -162,6 +167,13 @@ const Rating: ForwardRefRenderFunction<HTMLSpanElement, RatingProps> = (
                         name={name || defaultName}
                         checked={value == null}
                         onChange={onChange}
+                        onFocus={(e) => {
+                            if (e.target.matches(':focus-visible'))
+                                setFocus(true);
+                        }}
+                        onBlur={() => {
+                            setFocus(false);
+                        }}
                     />
                 </label>
             )}

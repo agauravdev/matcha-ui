@@ -27,6 +27,7 @@ const Template: Story<RatingProps> = (args) => {
                         : Number(e.currentTarget.value)
                 );
             }}
+            clearValue={() => setValue(null)}
         />
     );
 };
