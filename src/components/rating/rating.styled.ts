@@ -1,18 +1,36 @@
 import styled from 'styled-components';
 import { Icon } from '../icon';
+import { MainColors } from '../../config/theme';
 
-export type StyledRatingProps = {};
+export type StyledRatingProps = {
+    disabled: boolean;
+    color: MainColors;
+    focus: boolean;
+};
 
-const StyledRating = styled.div<StyledRatingProps>``;
+const StyledRating = styled.span<StyledRatingProps>`
+    color: ${(pr) =>
+        pr.disabled
+            ? pr.theme.disabled
+            : pr.theme[pr.color]['main']} !important;
+    font-size: 1.5rem;
+    border: ${(pr) => pr.focus && `1px solid ${pr.theme.grey['500']}`};
+`;
 
 export type StyledRatingIconProps = {
     active: boolean;
-    filled: boolean;
 };
 
 export const StyledRatingIcon = styled(Icon)<StyledRatingIconProps>`
-    transform: ${(pr) => pr.active && 'scale(1.5)'};
-    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    color: ${(pr) => pr.filled && 'red'};
+    transform: ${(pr) => pr.active && 'scale(1.2)'};
+    transition: transform 150ms;
+    color: inherit;
+    font-size: inherit;
+`;
+
+export const StyledRatingItem = styled.div<{ focus: boolean }>`
+    line-height: 75%;
+    display: inline-block;
+    border: ${(pr) => pr.focus && `1px solid ${pr.theme.grey['500']}`};
 `;
 export default StyledRating;

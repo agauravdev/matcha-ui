@@ -14,13 +14,19 @@ export default {
 } as Meta;
 
 const Template: Story<RatingProps> = (args) => {
-    const [value, setValue] = useState(3);
+    const [value, setValue] = useState<number | null>(null);
 
     return (
         <Rating
             {...args}
             value={value}
-            onChange={(e) => setValue(Number(e.currentTarget.value))}
+            onChange={(e) => {
+                setValue(
+                    e.currentTarget.value === ''
+                        ? null
+                        : Number(e.currentTarget.value)
+                );
+            }}
         />
     );
 };
@@ -28,4 +34,6 @@ const Template: Story<RatingProps> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     color: 'primary',
+    disabled: false,
+    readOnly: false,
 };

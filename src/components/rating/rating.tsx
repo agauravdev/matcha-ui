@@ -2,20 +2,24 @@ import React, {
     ChangeEventHandler,
     ForwardRefRenderFunction,
     ReactNode,
-    useEffect,
+    useCallback,
     useState,
 } from 'react';
 import { ComponentSize } from '../../config/sizes';
-import { MdStar } from 'react-icons/all';
+import { MdStar, MdStarBorder } from 'react-icons/all';
 import { MainColors } from '../../config/theme';
-import { StyledRatingIcon } from './rating.styled';
+import StyledRating, {
+    StyledRatingIcon,
+    StyledRatingItem,
+} from './rating.styled';
 import visuallyHidden from '../../utils/visuallyHiddenCss';
 import styled from 'styled-components';
 
 export type RatingProps = {
-    value?: number;
+    value?: number | null;
     disabled?: boolean;
-    icon?: boolean;
+    filledIcon?: ReactNode;
+    emptyIcon?: ReactNode;
     max?: number;
     onChange?: ChangeEventHandler<HTMLInputElement>;
     readOnly?: boolean;
@@ -26,13 +30,16 @@ export type RatingProps = {
 
 type RatingItemProps = {
     isActive: boolean;
-    setIsActive: () => void;
+    setIsActive?: () => void;
     filled: boolean;
-    icon: ReactNode;
+    filledIcon: ReactNode;
+    emptyIcon: ReactNode;
     value: number;
     name: string;
     checked: boolean;
     onChange?: ChangeEventHandler<HTMLInputElement>;
+    readOnly: boolean;
+    id: string;
 };
 
 const HiddenInput = styled.input`
@@ -44,38 +51,45 @@ const RatingItem: React.FC<RatingItemProps> = (props) => {
         setIsActive,
         isActive,
         filled,
-        icon,
+        filledIcon,
+        emptyIcon,
         value,
         name,
         checked,
         onChange,
+        readOnly,
+        id,
     } = props;
 
-    console.log(visuallyHidden);
+    const [focus, setFocus] = useState(false);
 
-    console.log({ isActive, filled });
-    const [id] = useState(`matcha-${Math.round(Math.random() * 1e9)}`);
     return (
-        <>
-            <label htmlFor={id}>
-                <StyledRatingIcon
-                    active={isActive}
-                    filled={filled}
-                    color="primary"
-                    onMouseMove={setIsActive}
-                >
-                    {icon}
+        <StyledRatingItem focus={focus}>
+            <label
+                onMouseMove={setIsActive}
+                htmlFor={`${id}-${value}`}
+                style={{ display: 'inline-block', lineHeight: '75%' }}
+            >
+                <StyledRatingIcon active={isActive || focus}>
+                    {filled ? filledIcon : emptyIcon}
                 </StyledRatingIcon>
             </label>
             <HiddenInput
                 type="radio"
                 value={value}
                 name={name}
-                id={id}
+                id={`${id}-${value}`}
                 checked={checked}
+                readOnly={readOnly}
                 onChange={onChange}
+                onFocus={(e) => {
+                    if (e.target.matches(':focus-visible')) setFocus(true);
+                }}
+                onBlur={(e) => {
+                    setFocus(false);
+                }}
             />
-        </>
+        </StyledRatingItem>
     );
 };
 
@@ -84,11 +98,13 @@ const Rating: ForwardRefRenderFunction<HTMLSpanElement, RatingProps> = (
     ref
 ) => {
     const {
-        value = 3,
+        color = 'primary',
+        value = 0,
         disabled = false,
-        icon = <MdStar />,
+        filledIcon = <MdStar />,
+        emptyIcon = <MdStarBorder />,
         max = 7,
-        readOnly = false,
+        readOnly: readOnlyProp = false,
         size = 'md',
         name,
         onChange,
@@ -96,32 +112,60 @@ const Rating: ForwardRefRenderFunction<HTMLSpanElement, RatingProps> = (
 
     const [activeValue, setActiveValue] = useState(-1);
     const [defaultName] = useState(`matcha-${Math.round(Math.random() * 1e9)}`);
+    const [id] = useState(`matcha-${Math.round(Math.random() * 1e9)}`);
 
-    useEffect(() => {
-        console.log(activeValue);
-    }, [activeValue]);
+    const readOnly = disabled || readOnlyProp;
+    const resetActiveValue = useCallback(() => {
+        setActiveValue(-1);
+    }, []);
 
     return (
-        <span ref={ref} onMouseOut={() => setActiveValue(-1)}>
+        <StyledRating
+            ref={ref}
+            onMouseLeave={resetActiveValue}
+            disabled={disabled}
+            color={color}
+            focus={value === null}
+        >
             {Array.from(new Array(max)).map((_, index) => {
                 return (
                     <RatingItem
-                        isActive={activeValue === index + 1}
-                        setIsActive={() => setActiveValue(index + 1)}
+                        key={index}
+                        isActive={readOnly ? false : activeValue === index + 1}
+                        setIsActive={
+                            readOnly
+                                ? undefined
+                                : () => setActiveValue(index + 1)
+                        }
                         filled={
                             activeValue >= 0
                                 ? index < activeValue
-                                : index < value
+                                : !!value && index < value
                         }
-                        icon={icon}
+                        emptyIcon={emptyIcon}
+                        filledIcon={filledIcon}
                         value={index + 1}
                         name={name || defaultName}
                         checked={value === index + 1}
-                        onChange={onChange}
+                        readOnly={readOnly}
+                        onChange={readOnly ? undefined : onChange}
+                        id={id}
                     />
                 );
             })}
-        </span>
+            {!readOnly && (
+                <label>
+                    <HiddenInput
+                        value=""
+                        id={`${id}-null`}
+                        type="radio"
+                        name={name || defaultName}
+                        checked={value == null}
+                        onChange={onChange}
+                    />
+                </label>
+            )}
+        </StyledRating>
     );
 };
 
