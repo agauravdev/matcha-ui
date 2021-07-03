@@ -22,9 +22,7 @@ export const StyledAdornment = styled.span`
     font-size: inherit;
 `;
 
-export const StyledInputWrapper = styled.div.attrs({
-    tabIndex: 0,
-})<StyledInputWrapperProps>`
+export const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
     display: inline-flex;
     align-items: center;
     padding-left: ${(pr) => pr.startAdornment && `0.8rem`};
