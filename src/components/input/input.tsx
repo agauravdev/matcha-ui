@@ -2,7 +2,6 @@ import React, {
     CSSProperties,
     ForwardRefRenderFunction,
     ReactNode,
-    useState,
 } from 'react';
 import { ChangeEvent } from 'react';
 import { MainColors } from '../../config/theme';
