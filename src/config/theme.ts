@@ -175,33 +175,32 @@ const defaultTheme = {
 
 export type MainColors = 'primary' | 'secondary' | 'error' | 'warning' | 'info';
 
-export type ColorVariants = {
-    main?: string;
-    light?: string;
-    dark?: string;
-    contrastText?: string;
-    hover?: string;
-    focus?: string;
-    active?: string;
-    lighter10?: string;
-    darker10?: string;
-    lighter20?: string;
-    darker20?: string;
-    lighter30?: string;
-    darker30?: string;
-    lighter40?: string;
-    darker40?: string;
-    lighter50?: string;
-    darker50?: string;
-    lighter60?: string;
-    darker60?: string;
-    lighter70?: string;
-    darker70?: string;
-    lighter80?: string;
-    darker80?: string;
-    lighter90?: string;
-    darker90?: string;
-};
+export type ColorVariants =
+    | 'main'
+    | 'light'
+    | 'dark'
+    | 'contrastText'
+    | 'hover'
+    | 'focus'
+    | 'active'
+    | 'lighter10'
+    | 'darker10'
+    | 'lighter20'
+    | 'darker20'
+    | 'lighter30'
+    | 'darker30'
+    | 'lighter40'
+    | 'darker40'
+    | 'lighter50'
+    | 'darker50'
+    | 'lighter60'
+    | 'darker60'
+    | 'lighter70'
+    | 'darker70'
+    | 'lighter80'
+    | 'darker80'
+    | 'lighter90'
+    | 'darker90';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

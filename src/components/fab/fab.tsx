@@ -2,7 +2,7 @@ import React, { ForwardRefRenderFunction } from 'react';
 import { ElementType, ReactNode } from 'react';
 import styled from 'styled-components';
 import { MainColors } from '../../config/theme';
-import Button from '../button';
+import { Button } from '../button';
 
 export type FabProps = {
     color?: MainColors;
