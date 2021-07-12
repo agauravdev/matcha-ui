@@ -115,7 +115,7 @@ const StyledTypography = styled.div<StyledTypographyProps>`
     color: ${(pr) => {
         const { color } = pr;
         if (color === 'black') return 'black';
-        if (color === 'grey') return pr.theme.grey['900'];
+        if (color === 'grey') return pr.theme.text.secondary;
         return pr.theme[color].main;
     }};
 `;
