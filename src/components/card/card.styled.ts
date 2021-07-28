@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export type StyledCardRootProps = {
     variant: 'outlined' | 'elevated';
     minWidth: string;
+    maxWidth?: string;
 };
 
 const StyledCardRoot = styled.section<StyledCardRootProps>`
@@ -10,6 +11,8 @@ const StyledCardRoot = styled.section<StyledCardRootProps>`
         0 1px 5px 0 rgb(0 0 0 / 12%);
     border-radius: 0.25rem;
     min-width: ${(pr) => pr.minWidth};
+    max-width: ${(pr) => pr.maxWidth};
+    position: relative;
 `;
 
 export default StyledCardRoot;
