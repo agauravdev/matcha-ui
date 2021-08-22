@@ -7,6 +7,7 @@ import { MainColors } from '../../config/theme';
 export type CardProps = {
     variant?: 'outlined' | 'elevated';
     style?: CSSProperties;
+    horizontal?: boolean;
     minWidth?: number | string;
     maxWidth?: number | string;
     as?: ElementType;
@@ -18,6 +19,7 @@ const Card: React.FC<CardProps> = (props) => {
         style,
         minWidth = 16,
         maxWidth,
+        horizontal = false,
         ...restProps
     } = props;
 
@@ -33,6 +35,7 @@ const Card: React.FC<CardProps> = (props) => {
             style={style}
             minWidth={minWidthProp}
             maxWidth={maxWidthProp}
+            horizontal={horizontal}
             {...restProps}
         />
     );
