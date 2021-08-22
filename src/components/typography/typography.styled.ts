@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { MainColors } from '../../config/theme';
 
 export type StyledTypographyProps = {
-    color: MainColors | 'grey' | 'black';
+    color?: MainColors | 'grey' | 'black';
     align: 'center' | 'inherit' | 'justify' | 'left' | 'right';
     variant:
         | 'p'
@@ -114,6 +114,7 @@ const StyledTypography = styled.div<StyledTypographyProps>`
     text-align: ${(pr) => pr.align};
     color: ${(pr) => {
         const { color } = pr;
+        if (!color) return 'inherit';
         if (color === 'black') return 'black';
         if (color === 'grey') return pr.theme.text.secondary;
         return pr.theme[color].main;

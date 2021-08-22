@@ -30,7 +30,6 @@ const SimpleCardTemplate: Story<CardProps> = (args) => (
                     Eloquent JS
                 </Typography>
                 <Typography>
-                    {' '}
                     Eloquent JavaScript, 3rd Edition: A Modern Introduction to
                     Programming Paperback – 4
                 </Typography>

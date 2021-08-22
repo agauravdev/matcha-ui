@@ -19,6 +19,7 @@ export type TypographyProps = {
         | 'subtitle'
         | 'subtitle-bold';
     children: ReactNode;
+    style?: React.CSSProperties;
 };
 
 const Typography: ForwardRefRenderFunction<unknown, TypographyProps> = (
@@ -26,10 +27,11 @@ const Typography: ForwardRefRenderFunction<unknown, TypographyProps> = (
     ref
 ) => {
     const {
-        color = 'grey',
+        color,
         align = 'left',
         component,
         variant = 'p',
+        style: styleProp,
         ...restProps
     } = props;
 
@@ -51,7 +53,13 @@ const Typography: ForwardRefRenderFunction<unknown, TypographyProps> = (
     };
 
     return (
-        <StyledTypography as={asProp} ref={ref} {...styles} {...restProps} />
+        <StyledTypography
+            as={asProp}
+            ref={ref}
+            {...styles}
+            {...restProps}
+            style={styleProp}
+        />
     );
 };
 
