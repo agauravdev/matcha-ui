@@ -47,7 +47,9 @@ const StyledAlert = styled.div<StyledAlertProps>`
 `;
 
 export const StyledAlertText = styled.div`
+    align-items: center;
     padding-bottom: 0.05rem;
+    display: flex;
 `;
 
 export default StyledAlert;
