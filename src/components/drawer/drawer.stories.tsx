@@ -10,12 +10,6 @@ import { Button } from '../button';
 export default {
     title: 'Example/Drawer',
     component: Drawer,
-    // argTypes: {
-    //     color: {
-    //         options: ['primary', 'secondary', 'error', 'warning', 'info'],
-    //         control: { type: 'radio' },
-    //     },
-    // },
 } as Meta;
 
 const Template: Story<DrawerProps> = () => {

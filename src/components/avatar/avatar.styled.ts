@@ -34,7 +34,6 @@ export const StyledAvatarText = styled.div<StyledAvatarTextProps>`
     justify-content: center;
     align-items: center;
     color: white;
-    // Find a better way to do this.
     font-size: ${(pr) => `${pr.theme.componentSizes[pr.size][0] / 2}rem`};
     font-weight: 300;
 `;

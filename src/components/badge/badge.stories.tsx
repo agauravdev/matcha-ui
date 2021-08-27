@@ -17,14 +17,6 @@ export default {
             options: ['top', 'bottom'],
             control: { type: 'radio' },
         },
-        // varient: {
-        //     options: ['default', 'filled', 'outlined'],
-        //     control: { type: 'radio' },
-        // },
-        // varient: {
-        //     options: ['contained', 'text', 'outlined'],
-        //     control: { type: 'radio' },
-        // },
     },
 } as Meta;
 

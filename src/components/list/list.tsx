@@ -6,7 +6,7 @@ import StyledList, {
 import React, { ReactNode } from 'react';
 import { Icon } from '../icon';
 import { Avatar } from '../avatar';
-import { AvatarProps } from '../avatar/avatar';
+import { AvatarProps } from '../avatar';
 
 export type ListItemTextProps = {
     primary: string;

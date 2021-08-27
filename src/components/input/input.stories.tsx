@@ -1,5 +1,4 @@
 import { Story, Meta } from '@storybook/react';
-
 import Input, { InputProps } from './input';
 import { MdLock } from 'react-icons/all';
 import { Icon } from '../icon';

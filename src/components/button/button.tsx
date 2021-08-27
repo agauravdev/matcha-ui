@@ -9,6 +9,7 @@ import { ComponentSize } from '../../config/sizes';
 import { MainColors } from '../../config/theme';
 import { Icon, IconProps } from '../icon';
 import StyledButton from './button.styled';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 export type ButtonVariant = 'contained' | 'text' | 'outlined';
 
@@ -76,8 +77,8 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
 
     const buttonBody = loading ? (
         <>
-            {loadingText}
-            {/* ToDo add spinner here */}
+            <span style={{ marginRight: '0.5rem' }}>{loadingText}</span>
+            <ClipLoader loading={true} color={'inherit'} size={20} />
         </>
     ) : (
         <>

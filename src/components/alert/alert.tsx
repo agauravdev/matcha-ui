@@ -3,7 +3,6 @@ import { MainColors } from '../../config/theme';
 import { Icon } from '../icon';
 import StyledAlert, { StyledAlertText } from './alert.styled';
 
-// ToDo Why does alert give an error when I add icon in alert.stories.tsx but goes away when i add children in AlertProps
 export type AlertProps = {
     color: MainColors;
     icon?: ReactNode;
@@ -16,13 +15,7 @@ const Alert: ForwardRefRenderFunction<HTMLDivElement, AlertProps> = (
     props,
     ref
 ) => {
-    const {
-        color = 'primary',
-        icon,
-        variant = 'default',
-        // action,
-        children,
-    } = props;
+    const { color = 'primary', icon, variant = 'default', children } = props;
 
     return (
         <StyledAlert variant={variant} color={color} ref={ref}>

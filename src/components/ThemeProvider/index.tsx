@@ -5,11 +5,11 @@ import _ from 'lodash';
 import { defaultTheme } from '../../config';
 import { Theme } from '../../config/theme';
 
-const ThemeProvider = ({
+const Index = ({
     theme: parsedTheme,
     children,
 }: {
-    theme: Theme;
+    theme?: Theme;
     children: React.ReactNode;
 }) => {
     const theme = _.assign(defaultTheme, parsedTheme);
@@ -21,4 +21,4 @@ const ThemeProvider = ({
     );
 };
 
-export default ThemeProvider;
+export default Index;

@@ -8,12 +8,6 @@ import { IoMdHeartEmpty } from 'react-icons/all';
 export default {
     title: 'Example/Card',
     component: Card,
-    // argTypes: {
-    //     color: {
-    //         options: ['primary', 'secondary', 'error', 'warning', 'info'],
-    //         control: { type: 'radio' },
-    //     },
-    // },
 } as Meta;
 
 const SimpleCardTemplate: Story<CardProps> = (args) => (

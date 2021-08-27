@@ -14,10 +14,6 @@ export default {
             options: ['sm', 'md', 'lg', 'xl'],
             control: { type: 'radio' },
         },
-        // varient: {
-        //     options: ['contained', 'text', 'outlined'],
-        //     control: { type: 'radio' },
-        // },
     },
 } as Meta;
 
