@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ComponentSize } from '../../config/sizes';
-import { MainColors } from '../../config/theme';
+import { ComponentSize, MainColors } from '../../config';
 import { Icon } from '../icon';
 import { ButtonVariant } from './button';
 
@@ -12,7 +11,9 @@ interface StyledButtonProps {
     iconOnly: boolean;
 }
 
-const StyledButton = styled.button<StyledButtonProps>`
+const StyledButton = styled.button.attrs((pr) => ({
+    disabled: pr.disabled,
+}))<StyledButtonProps>`
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -24,7 +25,8 @@ const StyledButton = styled.button<StyledButtonProps>`
     background-color: white;
     letter-spacing: 0.05rem;
     &:hover {
-        background-color: ${(pr) => pr.theme[pr.buttonColor].hover};
+        background-color: ${(pr) =>
+            pr.disabled || pr.theme[pr.buttonColor].hover};
     }
     &:active {
         background-color: ${(pr) => pr.theme[pr.buttonColor].active};
@@ -89,6 +91,7 @@ const StyledButton = styled.button<StyledButtonProps>`
         css`
             background-color: ${pr.theme.disabledBackground};
             color: ${pr.theme.disabled};
+            cursor: not-allowed;
         `}
     text-align: center;
     font-weight: 500;

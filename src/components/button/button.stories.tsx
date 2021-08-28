@@ -1,7 +1,9 @@
 import { Story, Meta } from '@storybook/react';
 import { MdShoppingCart } from 'react-icons/md';
 
-import Button, { ButtonProps } from './button';
+import Button from './button';
+import ClipLoader from 'react-spinners/ClipLoader';
+import React from 'react';
 
 export default {
     title: 'Example/Button',
@@ -18,7 +20,20 @@ export default {
     },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story = (args) => {
+    const { loadingText, ...restArgs } = args;
+    return (
+        <Button
+            loadingText={
+                <>
+                    <span style={{ marginRight: '0.5rem' }}>{loadingText}</span>
+                    <ClipLoader loading={true} color={'inherit'} size={20} />
+                </>
+            }
+            {...restArgs}
+        />
+    );
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -27,6 +42,7 @@ Default.args = {
     children: 'Default',
     loading: false,
     loadingText: 'Loading',
+    disabled: false,
 };
 
 export const IconButton = Template.bind({});
@@ -36,4 +52,5 @@ IconButton.args = {
     leftIcon: <MdShoppingCart />,
     loading: false,
     loadingText: 'Loading',
+    disabled: false,
 };

@@ -5,11 +5,9 @@ import React, {
     ReactNode,
     MutableRefObject,
 } from 'react';
-import { ComponentSize } from '../../config/sizes';
-import { MainColors } from '../../config/theme';
+import { MainColors, ComponentSize } from '../../config';
 import { Icon, IconProps } from '../icon';
 import StyledButton from './button.styled';
-import ClipLoader from 'react-spinners/ClipLoader';
 
 export type ButtonVariant = 'contained' | 'text' | 'outlined';
 
@@ -24,7 +22,7 @@ interface BaseButtonProps {
     children?: ReactNode;
     disabled?: boolean;
     loading?: boolean;
-    loadingText?: string;
+    loadingText?: ReactNode;
 }
 
 export interface HTMLButtonProps extends BaseButtonProps {
@@ -76,10 +74,7 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
     //  ToDo: Will I need loader style?
 
     const buttonBody = loading ? (
-        <>
-            <span style={{ marginRight: '0.5rem' }}>{loadingText}</span>
-            <ClipLoader loading={true} color={'inherit'} size={20} />
-        </>
+        { loadingText }
     ) : (
         <>
             {leftIcon && <Icon {...leftIconProps}>{leftIcon}</Icon>}
