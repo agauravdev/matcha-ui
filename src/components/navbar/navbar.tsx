@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import StyledNavbar, {
     StyledNavSearchInput,
     StyledNavSearchWrapper,
 } from './navbar.styled';
 import { Icon } from '../icon';
 import { MdSearch } from 'react-icons/all';
+import { StyledComponentProps } from 'styled-components';
 
 export type NavbarProps = {};
 
 export type NavSearchProps = {
     onSearch: Function;
+    inputProps: StyledComponentProps<'input', any, {}, never>;
 };
 
 const Navbar: React.FC<NavbarProps> = (props) => {
@@ -17,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
 };
 
 export const NavSearch = React.forwardRef<HTMLInputElement, NavSearchProps>(
-    ({ onSearch }, ref) => {
+    ({ onSearch, inputProps }, ref) => {
         return (
             <StyledNavSearchWrapper>
                 <Icon
@@ -28,11 +30,12 @@ export const NavSearch = React.forwardRef<HTMLInputElement, NavSearchProps>(
                     <MdSearch />
                 </Icon>
                 <StyledNavSearchInput
-                    ref={ref}
-                    onKeyUp={(event) => {
+                    ref={ref as any}
+                    onKeyUp={(event: KeyboardEvent<HTMLInputElement>) => {
                         if (event.key === 'Enter' && event.code === 'Enter')
                             onSearch();
                     }}
+                    {...inputProps}
                 />
             </StyledNavSearchWrapper>
         );

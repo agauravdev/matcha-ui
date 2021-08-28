@@ -29,7 +29,8 @@ const StyledButton = styled.button.attrs((pr) => ({
             pr.disabled || pr.theme[pr.buttonColor].hover};
     }
     &:active {
-        background-color: ${(pr) => pr.theme[pr.buttonColor].active};
+        background-color: ${(pr) =>
+            pr.disabled || pr.theme[pr.buttonColor].active};
     }
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
         box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,

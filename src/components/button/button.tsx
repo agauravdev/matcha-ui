@@ -72,7 +72,7 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
     };
 
     const buttonBody = loading ? (
-        { loadingText }
+        loadingText
     ) : (
         <>
             {leftIcon && <Icon {...leftIconProps}>{leftIcon}</Icon>}
