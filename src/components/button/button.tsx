@@ -71,8 +71,6 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
         iconOnly: children == null,
     };
 
-    //  ToDo: Will I need loader style?
-
     const buttonBody = loading ? (
         { loadingText }
     ) : (
