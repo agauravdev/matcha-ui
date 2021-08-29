@@ -12,3 +12,17 @@ npm i @agauravdev/matcha-ui
 // with yarn
 yarn add @agauravdev/matcha-ui
 ```
+
+To run this project locally till the time documentation gets ready, here's how.
+
+```sh
+git clone https://github.com/gauravggg21/matcha-ui
+cd matcha-ui
+git checkout development
+
+//with npm 
+npm run storybook
+
+//with yarn
+yarn run storybook
+```
