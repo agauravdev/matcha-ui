@@ -3,7 +3,7 @@ import { Avatar } from '.';
 import { AvatarProps } from './avatar';
 
 export default {
-    title: 'Example/Avatar',
+    title: 'Components/Avatar',
     component: Avatar,
     argTypes: {
         bgColor: {

@@ -3,7 +3,7 @@ import Rating, { RatingProps } from './rating';
 import { useState } from 'react';
 
 export default {
-    title: 'Example/Rating',
+    title: 'Components/Rating',
     component: Rating,
     argTypes: {
         color: {

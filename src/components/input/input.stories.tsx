@@ -4,7 +4,7 @@ import { MdLock } from 'react-icons/all';
 import { Icon } from '../icon';
 
 export default {
-    title: 'Example/Input',
+    title: 'Components/Input',
     component: Input,
     argTypes: {
         focusColor: {

@@ -3,7 +3,7 @@ import { List, ListItem, ListItemText } from './list';
 import { MdFolder, MdKeyboardArrowRight } from 'react-icons/all';
 
 export default {
-    title: 'Example/List',
+    title: 'Components/List',
     component: List,
     argTypes: {
         icon: {

@@ -6,7 +6,7 @@ import { Icon } from '../icon';
 import { IoMdHeartEmpty } from 'react-icons/all';
 
 export default {
-    title: 'Example/Card',
+    title: 'Components/Card',
     component: Card,
 } as Meta;
 

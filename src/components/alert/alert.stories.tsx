@@ -1,8 +1,9 @@
 import { Story, Meta } from '@storybook/react';
 import Alert, { AlertProps } from './alert';
 import { MdError } from 'react-icons/md';
+
 export default {
-    title: 'Example/Alert',
+    title: 'Components/Alert',
     component: Alert,
     argTypes: {
         color: {

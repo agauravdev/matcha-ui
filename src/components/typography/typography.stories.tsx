@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react';
 import Typography, { TypographyProps } from './typography';
 
 export default {
-    title: 'Example/Typography',
+    title: 'Components/Typography',
     component: Typography,
     argTypes: {
         variant: {

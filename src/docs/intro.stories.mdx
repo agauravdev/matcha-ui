@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting-Started/Intro" />
+
+# Get started
+
+Don't like writing CSS or just too lazy to write it? Don't worry, we've got you covered. Use our library and make beautiful React Apps without much CSS. 😮‍💨
+
+All the components are accessible by keyboard too in this repository, and if you find any which aren't working properly, please file an issue in the Github repo. 😬
+
+## Install
+
+Matcha-UI is available as an [npm package](https://www.npmjs.com/package/@agauravdev/matcha-ui).
+
+```sh
+// with npm
+npm i @agauravdev/matcha-ui
+
+// with yarn
+yarn add @agauravdev/matcha-ui
+```
+
+
+### **Use**
+
+Import the components you want in your UI.
+
+`import { Button, Alert } from '@agauravdev/matcha-ui';`
+
+and you can use them like
+
+```tsx
+  const Component: React.FC = () => (
+    <div>
+      <Button color="primary" onClick={() => 0}>Click Me!</Button>
+      <Alert>This is a test alert</Alert>
+    </div>
+  )
+```
+
+### **Run and develop Matcha-UI locally**
+
+Clone the [GitHub project](https://github.com/gauravggg21/matcha-ui/) then start Storybook.
+
+`yarn && yarn run storybook`
+

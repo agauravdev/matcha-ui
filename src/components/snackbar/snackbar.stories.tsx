@@ -6,7 +6,7 @@ import { Alert } from '../alert';
 import { MdClose } from 'react-icons/all';
 
 export default {
-    title: 'Example/Snackbar',
+    title: 'Components/Snackbar',
     component: Snackbar,
     argTypes: {
         vertical: {

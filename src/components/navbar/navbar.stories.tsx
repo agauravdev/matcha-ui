@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { MdShoppingCart } from 'react-icons/md';
 
 export default {
-    title: 'Example/Navbar',
+    title: 'Components/Navbar',
     component: Navbar,
     argTypes: {
         color: {

@@ -6,7 +6,7 @@ import { Icon } from '../icon';
 import { BadgeProps } from './badge';
 
 export default {
-    title: 'Example/Badge',
+    title: 'Components/Badge',
     component: Badge,
     argTypes: {
         color: {

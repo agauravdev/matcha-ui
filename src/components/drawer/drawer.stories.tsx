@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Button } from '../button';
 
 export default {
-    title: 'Example/Drawer',
+    title: 'Components/Drawer',
     component: Drawer,
 } as Meta;
 

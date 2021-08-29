@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from '../button';
 
 export default {
-    title: 'Example/Modal',
+    title: 'Components/Modal',
     component: Modal,
 } as Meta;
 

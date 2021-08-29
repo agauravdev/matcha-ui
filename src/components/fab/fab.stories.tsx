@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react';
 import Fab, { FabProps } from './fab';
 
 export default {
-    title: 'Example/Fab',
+    title: 'Components/Fab',
     component: Fab,
     argTypes: {
         color: {

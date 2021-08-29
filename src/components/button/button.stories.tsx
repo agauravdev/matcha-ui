@@ -6,7 +6,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import React from 'react';
 
 export default {
-    title: 'Example/Button',
+    title: 'Components/Button',
     component: Button,
     argTypes: {
         color: {
