@@ -52,19 +52,24 @@ const StyledButton = styled.button.attrs((pr) => ({
                     box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%),
                         0px 2px 2px 0px rgb(0 0 0 / 14%),
                         0px 1px 5px 0px rgb(0 0 0 / 12%);
+                    ${pr.disabled
+                        ? css`
+                              &:hover {
+                                  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%),
+                                      0px 4px 5px 0px rgb(0 0 0 / 14%),
+                                      0px 1px 10px 0px rgb(0 0 0 / 12%);
+                                  background-color: ${pr.theme[pr.buttonColor]
+                                      .dark};
+                              }
 
-                    &:hover {
-                        box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%),
-                            0px 4px 5px 0px rgb(0 0 0 / 14%),
-                            0px 1px 10px 0px rgb(0 0 0 / 12%);
-                        background-color: ${pr.theme[pr.buttonColor].dark};
-                    }
-                    &:active,
-                    &:focus-visible {
-                        box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%),
-                            0px 8px 10px 1px rgb(0 0 0 / 14%),
-                            0px 3px 14px 2px rgb(0 0 0 / 12%);
-                    }
+                              &:active,
+                              &:focus-visible {
+                                  box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%),
+                                      0px 8px 10px 1px rgb(0 0 0 / 14%),
+                                      0px 3px 14px 2px rgb(0 0 0 / 12%);
+                              }
+                          `
+                        : null}
                 `;
             case 'outlined':
                 return css`
@@ -90,7 +95,7 @@ const StyledButton = styled.button.attrs((pr) => ({
 
                     &:hover,
                     &:focus-visible {
-                        text-decoration: underline;
+                        text-decoration: ${pr.disabled ? 'underline' : null};
                         background-color: ${pr.disabled ||
                         pr.theme[pr.buttonColor].hover};
                     }
