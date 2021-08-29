@@ -23,6 +23,22 @@ yarn add @agauravdev/matcha-ui
 
 ### **Use**
 
+To use the components, you must put a theme provider context around the main application or around the highest component in which you want to use the library.
+
+```tsx
+import ThemeProvider from '@agauravdev/matcha-ui';
+import App from './App';
+import ReactDOM from 'react-dom';
+import React from 'react';
+
+ReactDOM.render(
+    <ThemeProvider>
+    	<App />
+    </ThemeProvider>
+  document.getElementById('root');
+);
+```
+
 Import the components you want in your UI.
 
 `import { Button, Alert } from '@agauravdev/matcha-ui';`
