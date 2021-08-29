@@ -24,9 +24,8 @@ const StyledButton = styled.button.attrs((pr) => ({
     cursor: pointer;
     background-color: white;
     letter-spacing: 0.05rem;
-    &:hover {
-        background-color: ${(pr) =>
-            pr.disabled || pr.theme[pr.buttonColor].hover};
+    &:focus-visible {
+        outline: none;
     }
     &:active {
         background-color: ${(pr) =>
@@ -36,22 +35,32 @@ const StyledButton = styled.button.attrs((pr) => ({
         box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
         border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     ${(pr) => {
-        if (pr.disabled) return;
+        console.log(
+            `1px solid ${
+                pr.disabled ? pr.theme.disabled : pr.theme[pr.buttonColor].light
+            };`
+        );
         switch (pr.variant) {
             case 'contained':
                 return css`
-                    background-color: ${pr.theme[pr.buttonColor].main};
+                    background-color: ${pr.disabled
+                        ? pr.theme.disabledBackground
+                        : pr.theme[pr.buttonColor].main};
+
                     color: white;
+
                     box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%),
                         0px 2px 2px 0px rgb(0 0 0 / 14%),
                         0px 1px 5px 0px rgb(0 0 0 / 12%);
+
                     &:hover {
                         box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%),
                             0px 4px 5px 0px rgb(0 0 0 / 14%),
                             0px 1px 10px 0px rgb(0 0 0 / 12%);
                         background-color: ${pr.theme[pr.buttonColor].dark};
                     }
-                    &:active {
+                    &:active,
+                    &:focus-visible {
                         box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%),
                             0px 8px 10px 1px rgb(0 0 0 / 14%),
                             0px 3px 14px 2px rgb(0 0 0 / 12%);
@@ -60,9 +69,17 @@ const StyledButton = styled.button.attrs((pr) => ({
             case 'outlined':
                 return css`
                     color: ${pr.theme[pr.buttonColor].main};
-                    border: 1px solid ${pr.theme[pr.buttonColor].light};
-                    &:hover {
+
+                    border: 1px solid
+                        ${pr.disabled
+                            ? pr.theme.disabled
+                            : pr.theme[pr.buttonColor].light}!important;
+
+                    &:hover,
+                    &:focus-visible {
                         border: 1px solid ${pr.theme[pr.buttonColor].main};
+                        background-color: ${pr.disabled ||
+                        pr.theme[pr.buttonColor].hover};
                     }
                 `;
 
@@ -70,8 +87,12 @@ const StyledButton = styled.button.attrs((pr) => ({
                 return css`
                     color: ${pr.theme[pr.buttonColor].main};
                     border: none;
-                    &:hover {
+
+                    &:hover,
+                    &:focus-visible {
                         text-decoration: underline;
+                        background-color: ${pr.disabled ||
+                        pr.theme[pr.buttonColor].hover};
                     }
                 `;
             default:
@@ -90,9 +111,9 @@ const StyledButton = styled.button.attrs((pr) => ({
     ${(pr) =>
         pr.disabled &&
         css`
-            background-color: ${pr.theme.disabledBackground};
             color: ${pr.theme.disabled};
             cursor: not-allowed;
+            box-shadow: initial;
         `}
     text-align: center;
     font-weight: 500;
