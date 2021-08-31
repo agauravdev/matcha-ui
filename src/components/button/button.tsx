@@ -8,10 +8,11 @@ import React, {
 import { MainColors, ComponentSize } from '../../config';
 import { Icon, IconProps } from '../icon';
 import StyledButton from './button.styled';
+import CommonProps from '../../utils/commonProps';
 
 export type ButtonVariant = 'contained' | 'text' | 'outlined';
 
-interface BaseButtonProps {
+type BaseButtonProps = {
     variant?: ButtonVariant;
     color?: MainColors;
     leftIcon?: ReactNode;
@@ -23,7 +24,7 @@ interface BaseButtonProps {
     disabled?: boolean;
     loading?: boolean;
     loadingText?: ReactNode;
-}
+} & CommonProps;
 
 export interface HTMLButtonProps extends BaseButtonProps {
     onClick?: MouseEventHandler<HTMLElement>;
@@ -83,7 +84,14 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
 
     if (as && !disabled) {
         return (
-            <StyledButton as={as} to={to} ref={ref} {...styles}>
+            <StyledButton
+                as={as}
+                to={to}
+                ref={ref}
+                {...styles}
+                style={props.style}
+                className={props.className}
+            >
                 {buttonBody}
             </StyledButton>
         );
@@ -96,6 +104,8 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
                 href={href}
                 ref={ref as MutableRefObject<HTMLAnchorElement>}
                 {...styles}
+                style={props.style}
+                className={props.className}
             >
                 {buttonBody}
             </StyledButton>
@@ -109,6 +119,8 @@ const Button: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
             onClick={onClick}
             ref={ref as MutableRefObject<HTMLButtonElement>}
             {...styles}
+            style={props.style}
+            className={props.className}
         >
             {buttonBody}
         </StyledButton>

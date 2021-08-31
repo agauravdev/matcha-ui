@@ -5,15 +5,16 @@ import React, {
     useCallback,
     useState,
 } from 'react';
-import { ComponentSize } from '../../config/sizes';
+import { ComponentSize } from '../../config';
 import { MdStar, MdStarBorder } from 'react-icons/all';
-import { MainColors } from '../../config/theme';
+import { MainColors } from '../../config';
 import StyledRating, {
     StyledRatingIcon,
     StyledRatingItem,
 } from './rating.styled';
 import visuallyHidden from '../../utils/visuallyHiddenCss';
 import styled from 'styled-components';
+import CommonProps from '../../utils/commonProps';
 
 export type RatingProps = {
     value?: number | null;
@@ -27,7 +28,7 @@ export type RatingProps = {
     name: string;
     color?: MainColors;
     clearValue?: () => void;
-};
+} & CommonProps;
 
 type RatingItemProps = {
     isActive: boolean;
@@ -42,7 +43,7 @@ type RatingItemProps = {
     readOnly: boolean;
     id: string;
     clearValue?: () => void;
-};
+} & CommonProps;
 
 const HiddenInput = styled.input`
     ${visuallyHidden}
@@ -109,7 +110,7 @@ const Rating: ForwardRefRenderFunction<HTMLSpanElement, RatingProps> = (
         emptyIcon = <MdStarBorder />,
         max = 7,
         readOnly: readOnlyProp = false,
-        size = 'md',
+        // size = 'md',
         name,
         onChange,
     } = props;
@@ -131,6 +132,8 @@ const Rating: ForwardRefRenderFunction<HTMLSpanElement, RatingProps> = (
             disabled={disabled}
             color={color}
             focus={focus}
+            style={props.style}
+            className={props.className}
         >
             {Array.from(new Array(max)).map((_, index) => {
                 return (

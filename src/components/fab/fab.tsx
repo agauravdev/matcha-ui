@@ -1,8 +1,9 @@
 import React, { ForwardRefRenderFunction } from 'react';
 import { ElementType, ReactNode } from 'react';
 import styled from 'styled-components';
-import { MainColors } from '../../config/theme';
+import { MainColors } from '../../config';
 import { Button } from '../button';
+import CommonProps from '../../utils/commonProps';
 
 export type FabProps = {
     color?: MainColors;
@@ -10,7 +11,7 @@ export type FabProps = {
     children: ReactNode;
     as?: ElementType;
     to?: string;
-};
+} & CommonProps;
 
 const StyledFab = styled(Button)`
     width: 3rem;
@@ -21,7 +22,15 @@ const StyledFab = styled(Button)`
 const Fab: ForwardRefRenderFunction<unknown, FabProps> = (props, ref) => {
     const { color, href, children, as, to } = props;
     return (
-        <StyledFab color={color} href={href} as={as} to={to} ref={ref}>
+        <StyledFab
+            color={color}
+            href={href}
+            as={as}
+            to={to}
+            ref={ref}
+            style={props.style}
+            className={props.className}
+        >
             {children}
         </StyledFab>
     );

@@ -5,7 +5,7 @@ export type StyledNavbarProps = {};
 const StyledNavbar = styled.div<StyledNavbarProps>`
     display: flex;
     width: 100%;
-    background-color: ${(pr) => pr.theme.info.main};
+    background-color: ${(pr) => pr.theme.primary.main};
     color: ${(pr) => pr.theme.info.contrastText};
     padding: 0 1.5rem;
     min-height: 4rem;

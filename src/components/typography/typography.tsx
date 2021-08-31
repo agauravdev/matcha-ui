@@ -1,6 +1,7 @@
-import React, { ElementType, ForwardRefRenderFunction, ReactNode } from 'react';
-import { MainColors } from '../../config/theme';
+import React, { ElementType, ForwardRefRenderFunction } from 'react';
+import { MainColors } from '../../config';
 import StyledTypography from './typography.styled';
+import CommonProps from '../../utils/commonProps';
 
 export type TypographyProps = {
     color?: MainColors | 'grey' | 'black';
@@ -18,9 +19,7 @@ export type TypographyProps = {
         | 'h6'
         | 'subtitle'
         | 'subtitle-bold';
-    children: ReactNode;
-    style?: React.CSSProperties;
-};
+} & CommonProps;
 
 const Typography: ForwardRefRenderFunction<unknown, TypographyProps> = (
     props,

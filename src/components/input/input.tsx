@@ -4,13 +4,14 @@ import React, {
     ReactNode,
 } from 'react';
 import { ChangeEvent } from 'react';
-import { MainColors } from '../../config/theme';
+import { MainColors } from '../../config';
 import {
     StyledAdornment,
     StyledInput,
     StyledHelperText,
     StyledInputWrapper,
 } from './input.styled';
+import CommonProps from '../../utils/commonProps';
 
 export type InputProps = {
     hoverColor?: string;
@@ -22,7 +23,7 @@ export type InputProps = {
     value?: string;
     startAdornment?: ReactNode | 'string';
     endAdornment?: ReactNode | 'string';
-};
+} & CommonProps;
 
 const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     props,
@@ -63,7 +64,11 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 
     return (
         <div style={baseDivStyle}>
-            <StyledInputWrapper {...wrapperStyles}>
+            <StyledInputWrapper
+                {...wrapperStyles}
+                style={props.style}
+                className={props.className}
+            >
                 {startAdornment && (
                     <StyledAdornment>{startAdornment}</StyledAdornment>
                 )}

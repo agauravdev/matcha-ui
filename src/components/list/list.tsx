@@ -7,20 +7,24 @@ import React, { ReactNode } from 'react';
 import { Icon } from '../icon';
 import { Avatar } from '../avatar';
 import { AvatarProps } from '../avatar';
+import CommonProps from '../../utils/commonProps';
 
 export type ListItemTextProps = {
     primary: string;
     secondary?: string;
-};
+} & CommonProps;
 
 export type ListItemProps =
-    | {
-          icon: ReactNode;
-      }
-    | {
-          avatarProps: AvatarProps;
-      }
-    | {};
+    | (
+          | {
+                icon: ReactNode;
+            }
+          | {
+                avatarProps: AvatarProps;
+            }
+          | {}
+      ) &
+          CommonProps;
 
 export const ListItemText: React.FC<ListItemTextProps> = ({
     primary,
@@ -36,7 +40,11 @@ export const ListItemText: React.FC<ListItemTextProps> = ({
 
 export const ListItem: React.FC<ListItemProps> = (props) => {
     return (
-        <StyledListItem borderBelow={'avatarProps' in props}>
+        <StyledListItem
+            borderBelow={'avatarProps' in props}
+            style={props.style}
+            className={props.className}
+        >
             {'icon' in props && <Icon>{props.icon}</Icon>}
             {'avatarProps' in props && <Avatar {...props.avatarProps} />}
             {props.children}

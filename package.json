@@ -1,8 +1,9 @@
 {
   "name": "@agauravdev/matcha-ui",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "private": false,
   "main": "lib/index.js",
+  "license": "MIT",
   "files": [
     "lib"
   ],
@@ -20,7 +21,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "storybook-docs": "start-storybook --docs --no-manager-cache",
-    "prebuild": "rm -rf ./lib"
+    "prebuild": "rm -rf ./lib",
+    "prepublish": "yarn build"
   },
   "eslintConfig": {
     "extends": [

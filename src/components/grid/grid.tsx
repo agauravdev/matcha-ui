@@ -1,22 +1,26 @@
 import React from 'react';
 import StyledGrid from './grid.styled';
+import CommonProps from '../../utils/commonProps';
 
 export type GridProps =
-    | {
-          type: 'fractions';
-          template: Number[];
-          gap?: number;
-      }
-    | {
-          type: 'percentage';
-          template: Number[];
-          gap?: number;
-      }
-    | {
-          type: 'mixed';
-          template: String[];
-          gap?: number;
-      };
+    | (
+          | {
+                type: 'fractions';
+                template: Number[];
+                gap?: number;
+            }
+          | {
+                type: 'percentage';
+                template: Number[];
+                gap?: number;
+            }
+          | {
+                type: 'mixed';
+                template: String[];
+                gap?: number;
+            }
+      ) &
+          CommonProps;
 
 const Grid: React.FC<GridProps> = (props) => {
     const { gap = 1.5, children, ...restProps } = props;

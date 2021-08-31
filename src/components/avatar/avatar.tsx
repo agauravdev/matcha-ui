@@ -1,22 +1,26 @@
 import React, { MutableRefObject } from 'react';
 import { ForwardRefRenderFunction } from 'react';
-import { ComponentSize } from '../../config/sizes';
-import { MainColors } from '../../config/theme';
+import { ComponentSize } from '../../config';
+import { MainColors } from '../../config';
 import { StyledAvatarImage, StyledAvatarText } from './avatar.styled';
+import CommonProps from '../../utils/commonProps';
 
 export type AvatarProps =
-    | {
-          type: 'image';
-          src: string;
-          alt: string;
-          size?: ComponentSize;
-      }
-    | {
-          type: 'text';
-          text: string;
-          size?: ComponentSize;
-          bgColor: MainColors;
-      };
+    | (
+          | {
+                type: 'image';
+                src: string;
+                alt: string;
+                size?: ComponentSize;
+            }
+          | {
+                type: 'text';
+                text: string;
+                size?: ComponentSize;
+                bgColor: MainColors;
+            }
+      ) &
+          CommonProps;
 
 const Avatar: ForwardRefRenderFunction<
     HTMLImageElement | HTMLDivElement,
@@ -29,6 +33,8 @@ const Avatar: ForwardRefRenderFunction<
                 alt={props.alt}
                 size={props.size || 'sm'}
                 ref={ref as MutableRefObject<HTMLImageElement>}
+                style={props.style}
+                className={props.className}
             />
         );
     else
@@ -37,6 +43,8 @@ const Avatar: ForwardRefRenderFunction<
                 bgColor={props.bgColor}
                 ref={ref as MutableRefObject<HTMLDivElement>}
                 size={props.size || 'md'}
+                style={props.style}
+                className={props.className}
             >
                 {props.text}
             </StyledAvatarText>

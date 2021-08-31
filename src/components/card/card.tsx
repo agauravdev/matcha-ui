@@ -2,7 +2,8 @@ import React, { CSSProperties, ElementType } from 'react';
 import StyledCardRoot from './card.styled';
 import styled from 'styled-components';
 import { Property } from 'csstype';
-import { MainColors } from '../../config/theme';
+import { MainColors } from '../../config';
+import CommonProps from '../../utils/commonProps';
 
 export type CardProps = {
     variant?: 'outlined' | 'elevated';
@@ -11,7 +12,7 @@ export type CardProps = {
     minWidth?: number | string;
     maxWidth?: number | string;
     as?: ElementType;
-};
+} & CommonProps;
 
 const Card: React.FC<CardProps> = (props) => {
     const {

@@ -5,13 +5,14 @@ import {
     StyledModalWrapper,
 } from './modal.styled';
 import { MdClose } from 'react-icons/all';
+import CommonProps from '../../utils/commonProps';
 
 export type ModalProps = {
     open: boolean;
     onClose: () => void;
     closeIcon?: ReactNode | 'none';
     width?: string;
-};
+} & CommonProps;
 
 const Modal: React.FC<ModalProps> = (props) => {
     const { open, onClose, children, width, closeIcon = <MdClose /> } = props;
@@ -27,7 +28,12 @@ const Modal: React.FC<ModalProps> = (props) => {
     }
     return (
         <StyledModalWrapper onClick={onClose}>
-            <StyledModal width={width} onClick={(e) => e.stopPropagation()}>
+            <StyledModal
+                width={width}
+                onClick={(e) => e.stopPropagation()}
+                style={props.style}
+                className={props.className}
+            >
                 {closeIcon !== 'none' && (
                     <StyledCloseIcon onClick={onClose}>
                         {closeIcon}

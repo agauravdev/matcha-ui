@@ -1,5 +1,6 @@
-import React, { CSSProperties, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import StyledSnackbar from './snackbar.styled';
+import CommonProps from '../../utils/commonProps';
 
 export type SnackbarProps = {
     open: boolean;
@@ -10,8 +11,7 @@ export type SnackbarProps = {
         vertical: 'top' | 'bottom';
         horizontal: 'left' | 'right' | 'center';
     };
-    style?: CSSProperties;
-};
+} & CommonProps;
 
 const Snackbar: React.FC<SnackbarProps> = ({
     position,
@@ -21,6 +21,7 @@ const Snackbar: React.FC<SnackbarProps> = ({
     persistent,
     style,
     children,
+    className,
 }) => {
     useEffect(() => {
         if (!persistent) {
@@ -31,7 +32,7 @@ const Snackbar: React.FC<SnackbarProps> = ({
 
     if (!open) return null;
     return (
-        <StyledSnackbar {...position} style={style}>
+        <StyledSnackbar {...position} style={style} className={className}>
             {children}
         </StyledSnackbar>
     );
