@@ -3,9 +3,9 @@ import React from 'react';
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
 import _ from 'lodash';
 import { defaultTheme } from '../../config';
-import { Theme } from '../../config/theme';
+import { Theme } from '../../config';
 
-const Index = ({
+const ThemeProvider = ({
     theme: parsedTheme,
     children,
 }: {
@@ -21,4 +21,4 @@ const Index = ({
     );
 };
 
-export default Index;
+export default ThemeProvider;

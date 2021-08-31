@@ -13,6 +13,6 @@ export * from './modal';
 export * from './navbar';
 export * from './snackbar';
 export * from './rating';
-export * from './ThemeProvider';
+export { default as ThemeProvider } from './ThemeProvider';
 export * from './typography';
 export * from './icon';
