@@ -8,6 +8,7 @@ export type BadgeProps = {
     content?: ReactNode;
     color?: MainColors;
     position?: 'top' | 'bottom';
+    children: ReactNode;
 } & CommonProps;
 
 const Badge: ForwardRefRenderFunction<HTMLSpanElement, BadgeProps> = (

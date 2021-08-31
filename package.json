@@ -1,6 +1,6 @@
 {
   "name": "@agauravdev/matcha-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "main": "lib/index.js",
   "license": "MIT",

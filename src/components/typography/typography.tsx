@@ -1,4 +1,4 @@
-import React, { ElementType, ForwardRefRenderFunction } from 'react';
+import React, { ElementType, ForwardRefRenderFunction, ReactNode } from 'react';
 import { MainColors } from '../../config';
 import StyledTypography from './typography.styled';
 import CommonProps from '../../utils/commonProps';
@@ -19,6 +19,7 @@ export type TypographyProps = {
         | 'h6'
         | 'subtitle'
         | 'subtitle-bold';
+    children: ReactNode;
 } & CommonProps;
 
 const Typography: ForwardRefRenderFunction<unknown, TypographyProps> = (
@@ -31,6 +32,7 @@ const Typography: ForwardRefRenderFunction<unknown, TypographyProps> = (
         component,
         variant = 'p',
         style: styleProp,
+        children,
         ...restProps
     } = props;
 
@@ -58,7 +60,9 @@ const Typography: ForwardRefRenderFunction<unknown, TypographyProps> = (
             {...styles}
             {...restProps}
             style={styleProp}
-        />
+        >
+            {children}
+        </StyledTypography>
     );
 };
 
